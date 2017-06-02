@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>登录页面</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/login.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+</head>
+
+<body>
+{% if not username %}
+
+    <!----------------------------------------------------------------->
+    {#<form method="post" action="/booksys/login/">#}
+    {#<form method="post" action="{% url 'booksys:userlogin' %}">#}
+    {#{% csrf_token %}#}
+    {#     <label>用户名：</label><input type="text" name="username" value="">#}
+    {#     <label>密码：</label><input type="text" name="userpassword" value="">#}
+    {#<input type="submit" value="login">#}
+    {#</form>#}
+    <!------------------------------------------------------------>
+    <!--使用bootstrap样式-->
+    <div class="container">
+
+        <form class="form-signin" method="post" action="{% url 'booksys:userlogin' %}">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">登录</h2>
+            <label for="inputUsername" class="sr-only">昵称：</label>
+            <input type="text" id="inputUsername" class="form-control" placeholder="昵称" name="username" required autofocus>
+            <br>
+            <label for="inputPassword" class="sr-only">密码：</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="userpassword" required>
+            <!-------------------------------------->
+            {#            <div class="checkbox">#}
+            {#                <label>#}
+            {#                    <input type="checkbox" value="remember-me"> 记住我#}
+            {#                </label>#}
+            {#            </div>#}
+            <!-------------------------------------------------->
+
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>{{ errorTip }}
+            <br>
+            <a href="{% url 'booksys:registeraction' %}">立即注册</a>
+        </form>
+
+
+    </div> <!-- /container -->
+{% else %}
+
+    {{ username }}is logout<br>
+    <form method="post" action="{% url 'booksys:logout' %}">
+        {#<form method="post" action="/booksys/logout/">   两种方式一样的#}
+        {% csrf_token %}
+        <input type="submit" value="logout">
+    </form>
+{% endif %}
+</body>
+</html>

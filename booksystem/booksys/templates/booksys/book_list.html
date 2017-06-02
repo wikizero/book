@@ -1,0 +1,16 @@
+<!----------获取书籍列表公共列表 根据不同分类得到的列表，最新的列表，热门列表等，包含在一个for循环中------------------->
+<div class="media" style="width: 700px">
+            <div class="media-left">
+                <a href="{% url 'booksys:bookDetail' book.id %}">
+                    <img src="/uploads/{{ book.bookimg }}" class="media-object">
+                </a>
+            </div>
+            <div class="media-body">
+                <h5 class="media-heading"><a href="{% url 'booksys:bookDetail' book.id %}">{{ book.bookname }}</a> </h5>
+                <h5>作者/译者:{{ book.bookauthor }}&nbsp;出版社:{{ book.bookpublisher }}&nbsp;<span class="glyphicon glyphicon-yen"></span> {{ book.bookprice}}</h5>
+                <h5>评价人数:<span class="badge" style="background-color: #c7254e"> {{ book.bookpl}}</span>&nbsp;评分:<span class="badge" style="background-color: #e38d13">{{ book.bookstar}}</span> &nbsp;类型：{% for booktag in book.booktag.all %}
+                    <span class="badge" style="background-color: #afd9ee">{{ booktag.name }}</span>{% endfor %}</h5>
+                <h5><span class="badge" style="background-color: #5cb85c">简介:</span> {{ book.bookdescribe|slice:'90' }}</h5>
+            </div>
+
+</div>

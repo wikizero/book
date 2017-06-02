@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>用户注册</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+    <style type="text/css">
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: white;
+    }
+
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <form action="{% url 'booksys:registeraction' %}" method="post" class="form-signin">
+        {% csrf_token %}
+        {#    <input type="hidden" name="userid",value="{{ users.id|default:'0' }}">#}
+        {#    <label>用户名：#}
+        {#        <input type="text" name="username" />#}
+        {##}
+        {#    </label>#}
+        {#    <br>#}
+        {#    <label>密码：#}
+        {#        <input type="text" name="userpassword"/>#}
+        {#    </label>#}
+        {##}
+        {#    <br>#}
+        {#    <input type="radio" name="sex" value="0" checked>男#}
+        {#    <input type="radio" name="sex" value="1">女#}
+        {##}
+        {#    <br>#}
+        {#    使用django.Form#}
+        <h1 class="center">注册信息</h1>
+       <h3>{{ userinformation_form.as_p}}</h3>
+
+        {#    {{ userinformation_form.userpassword.as_p }}#}
+
+        {#    {% for user in userinformation_form.sex %}#}
+        {#        {{ user }}#}
+        {##}
+        {#    {% endfor %}#}
+
+        <br><br><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+
+    </form>
+</div>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script type="application/javascript" src="{% static 'bootstrap/js/jquery-3.1.1.min.js' %}"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script language="JavaScript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

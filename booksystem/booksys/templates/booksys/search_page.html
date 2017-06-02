@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<br>
+<div class="container">
+{% if search_list %}
+    <h3>根据你的搜索"{{ textClean }}"结果如下:</h3>
+    <hr>
+    {% for book in search_list %}
+        {% include 'booksys/book_list.html' %}
+        <br>
+    {% endfor %}
+    {{ book_name }}
+    {% else %}
+    <p>抱歉！没有找到你想要的{{ book_name }}书籍！</p>
+
+{% endif %}
+
+
+
+</div>
+<!------------jquery----------------->
+<script type="application/javascript" src="{% static 'bootstrap/js/jquery-3.1.1.min.js' %}">
+</script>
+<!----------js---------------->
+<script language="JavaScript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"
+</body>
+</html>

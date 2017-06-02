@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+</head>
+<style type="text/css">
+    body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: white;
+    }
+
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+</style>
+<body>
+<div class="container">
+    <form action="{% url 'booksys:userEditAction' %}" method="post" class="form-signin">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ user.id}}">
+    <label>昵称
+           <input type="text" name="username" value="{{ user.username}}"/>
+    </label>
+        <label>性别
+            <select name="sex" id="sex" size="1" >
+             <option value='0'>男</option>
+             <option value='1'>女</option>
+            </select>
+        </label>
+
+       <br>
+    <label>密码
+           <input type="password" name="userpassword" value="{{user.userpassword }}"/>
+{#           <input type="text" style="display: none">#}
+    </label>
+    <br/>
+
+
+        <br><br><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">修改</button>
+        </form>
+
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script type="application/javascript" src="{% static 'bootstrap/js/jquery-3.1.1.min.js' %}"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script language="JavaScript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

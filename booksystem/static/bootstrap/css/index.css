@@ -1,0 +1,17 @@
+body{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.navbar{
+    margin-bottom: 20px;
+}
+
+p.footer-class{
+    /*position:absolute;*/
+    /*bottom: 0;*/
+    /*height: 40px;*/
+    font-size:1em ;
+    color: #B2B2B2;
+    margin: 2em 0 0;
+    text-align: center;
+}

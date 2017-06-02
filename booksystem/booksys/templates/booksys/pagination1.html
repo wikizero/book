@@ -1,0 +1,30 @@
+{#<div id="pagination">#}
+{#    <ul id="pagination-flickr">#}
+{#        {% if booktag_list.has_previous %}#}
+{#            <li class="previous"><a href="?page={{ booktag_list.previous_page_number }}">&laquo;上一页</a></li>#}
+{#        {% else %}#}
+{#            <li class="previous-off">&laquo;上一页</li>#}
+{#        {% endif %}#}
+{#        <li class="active">{{ booktag_list.number }}/{{ booktag_list.paginator.num_pages }}</li>#}
+{#        {% if booktag_list.has_next %}#}
+{#            <li class="next"><a href="?page={{ booktag_list.next_page_number }}">下一页 &raquo;</a></li>#}
+{#        {% else %}#}
+{#            <li class="next-off">下一页 &raquo;</li>#}
+{#        {% endif %}#}
+{#    </ul>#}
+{#</div>#}
+<nav aria-label="Page navigation">
+    <ul class="pager">
+        {% if book_list.has_previous %}
+            <li><a href="?page={{ book_list.previous_page_number }} ">&laquo;上一页</a></li>
+        {% else %}
+            <li>&laquo;上一页</li>
+        {% endif %}
+        <li class="active">{{ book_list.number }}/{{ book_list.paginator.num_pages }}</li>
+        {% if book_list.has_next %}
+            <li ><a href="?page={{ book_list.next_page_number }}">下一页 &raquo;</a></li>
+        {% else %}
+            <li>下一页 &raquo;</li>
+        {% endif %}
+    </ul>
+</nav>

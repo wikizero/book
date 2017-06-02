@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-education"></span>&nbsp;图书推荐系统</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'booksys:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+                <li> <a href="{% url 'booksys:about' %}">关于</a></li>
+                <li><a href="#">讨论区</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book"></span> &nbsp;热门标签<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {% for tag in tag_list %}
+                            <li><a href="{% url 'booksys:tag_page' tag.id %}">{{ tag.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+            </ul>
+
+            <form class="nav navbar-nav navbar-form" action="{% url 'booksys:search_page' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜书名 作者 出版社" name="text">
+                </div>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search" style="color: darkgreen"></span>搜索 </button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right" id="ulright">
+                <li class="active"><a href="{% url 'booksys:index' %}" ><span class="badge" style="background:#5cb85c"> 默认 </span><span class="sr-only" >(current)</span></a></li>
+                {% if username %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" style="color: #398439"></span>&nbsp;{{ username }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'booksys:userCenter' %}">个人中心</a> </li>
+                            <li><a href="{% url 'booksys:logout' %}" type="submit" role="button">退出</a> </li>
+                        </ul>
+                    </li>
+                {% else %}
+
+                    <li class="page-scroll"><a href="{% url 'booksys:userlogin' %}">登录</a></li>
+                    <li><a href="{% url 'booksys:registeraction' %}">注册</a></li>
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>

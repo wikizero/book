@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签页</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/index.css' %}">
+</head>
+<body>
+<div class="container">
+{% include 'booksys/nav-top.html' %}
+{#<h2><a href="{% url 'booksys:index' %}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></h2>#}
+<h2>{{ tag_id }}</h2>
+<br>
+    {% for book in booktag_list %}
+        {% include 'booksys/book_list.html' %}
+        <hr>
+    {% endfor %}
+{% include 'booksys/pagination.html' %}
+</div>
+
+{#{% for book in booktag_list %}#}
+{#    <img src="/uploads/{{ book.bookimg }}">  <!--图片动态上传与在前端展示-->#}
+{##}
+{#    <p></p>#}
+{#    {{ book.bookname }}#}
+
+{#{% endfor %}#}
+
+
+<!--jquery--->
+<script language="JavaScript"  src="{% static 'bootstrap/js/jquery-3.1.1.min.js'%}"></script>
+<!--js-->
+<script language="JavaScript" src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+</body>
+</html>
